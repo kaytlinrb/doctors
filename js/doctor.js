@@ -1,7 +1,7 @@
 var apiKey = require('./../.env').apiKey;
 
-var displayDoctors = function(result){
-  $('#doctorPannel').text(result);
+var displayDoctors = function(displayDoctors){
+  $('#doctorPannel').text(displayDoctors);
 };
 
 Doctor = function(name){
@@ -14,7 +14,7 @@ Doctor.prototype.getDoctors = function(specialty,name) {
   .then(function(result) {
 
     displayDoctors(result);
-    
+
     })
     console.log(getDoctors);
 };
