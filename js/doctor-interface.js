@@ -1,8 +1,11 @@
 var apiKey = require('./../.env').apiKey;
 
-$(document).ready(function(){
 
-  $('#resultsDiv').hide()
+
+$(document).ready(function(){
+  var medicalIssue = null;
+$('#resultsDiv').hide()
+
 $('#medicalForm').submit(function(event){
   event.preventDefault();
   var medicalIssue = $('#medicalIssueInput').val()
