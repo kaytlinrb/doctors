@@ -1,26 +1,27 @@
 var Doctor = require('./../js/doctor.js').doctorModule;
 var apiKey = require('./../.env').apiKey;
 
-
-
-$(document).ready(function(){
-  var medicalIssue = null;
-
 $('#resultsDiv').hide();
 
 
+var displayDoctors = function(issue, doctorData){
+  doctorData.forEach(function(doctor){
+    var firstname = doctor.profile.first_name;
+    var lastname = doctor.profile.last_name;
+    $('#doctorPannel').append(firstname + " " + lastname);
+  });
 
-$('#medicalForm').submit(function(event){
-    event.preventDefault();
-  var newDocs = new Doctor();
-  var medicalIssue = $('#medicalIssueInput').val().toString();
-  var docName = $('#docNameInput').val();
+};
+
+$(document).ready(function(){
+  var newDoc = new Doctor();
+$('#medicalForm').submit(function(){
+  var issue = $('#medicalIssueInput').val();
   $('#medicalIssueInput').val("");
-  $('#docNameInput').val("");
   $('#resultsDiv').show();
 
-  newDocs.getDoctors(displayDoctors);
-});
+  console.log(newDoc.getDoctors(issue, displayDoctors))
 
-
+  newDoc.getDoctors(issue, displayDoctors);
+  });
 });
